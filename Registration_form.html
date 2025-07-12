@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="Registration_form.css">
+</head>
+
+<body>
+    <h1>Registration Form</h1>
+    <p>Please fill out this form with the required information</p>
+    <!--Form- starts a form that collects user input, method="post"- Sends form data securely in the background, action="" Tells the form where to send the data, </form> Ends the form-->
+    <form method="post" action="https://httpbin.org/post">
+        <!--Inside Input we are setting attributes like ID-"Primarilty for CSS styling, JavaScript interactions and label accociations", Name-"Required if you want the field to be included in the POST or GET request. Tells the browser what key to use when sending form data to server"-->
+        <fieldset> <!--Information-->
+            <label for="first-name">Enter Your First Name:
+                <input required id="first-name" name="first-name" type="text"></label>
+            <label for="last-name">Enter Your Last Name:
+                <input required id="last-name" name="last-name" type="text"></label>
+            <label for="email">Enter Your Email:
+                <input required id="email" name="email" type="email"></label>
+            <label for="new-password">Create a New Password:
+                <input required id="new-password" name="new-password" type="password" pattern="[a-z0-9]{8,}"></label>
+            <!--minlength is adding a customer validation in this case password must be more than 8 charaters, Update we can more indepth with adding pattern in this case numbers 0-9, a-z alphabet, {8,} 8 or more charaters-->
+        </fieldset>
+        <fieldset> <!--Account Type-->
+            <legend>Account type (required)</legend> <!--The legend gives a title-->
+            <!--Adding checked so that way it is a MUST to choice Personal or Business-->
+            <label for="personal-account"> <!--Links the <label> to the input with that id-->
+                <input class="account-type" id="personal-account" type="radio" name="account-type" value="personal"
+                    checked> Personal
+                <!--ID Uniquely identifies the input element on the page/ Without id we cannot reference the input elsewhere when using CSS, JavaScript-->
+            </label>
+            <label for="business-account">
+                <input class="account-type" id="business-account" type="radio" name="account-type" value="business">
+                Business
+            </label>
+            <!--The reason for naming both Personal & Business radio button the same is so the form knows they are both related this allows you to only select ONE-->
+        </fieldset>
+        <fieldset><!--Profile Picture-->
+            <!--Why we use in some of the code <input> name vs value. Value only use if you want to pre-fill a feild ex "Account type" Name only use if the user types the data ex "Age"-->
+            <label for="profile-picture">Upload a profile picture:
+                <input id="profile-picture" name="profile-picture" type="file">
+            </label>
+            <label for="age"> Input your age (years):<!--Age Selection-->
+                <input id="age" name="age" type="number" min="13" max="120">
+            </label>
+            <label for="referrer"> How did you hear about us?<!--Recomendations-->
+                <select id="referrer" name="referrer"> <!--Select tag creates a drop-down list-->
+                    <option vaule="">(select one)</option>
+                    <option vaule="1">Indeed</option>
+                    <option vaule="2">YouTube</option>
+                    <option vaule="3">TikTok</option>
+                    <option vaule="4">LinkedIn</option>
+                    <option value="5">Other</option>
+                    <!--Each <option> inside the <select> is a choice the user can pick-->
+                </select>
+            </label>
+            <label for="bio">Provide a bio: <!--Bio-->
+                <textarea placeholder="I like to code on the beach..." id="bio" name="bio" rows="3"
+                    cols="30"></textarea>
+                <!--Rows set number of lines, Cols sets number of characters per line, Placeholders give campers an idea on what to write in the bio-->
+            </label>
+        </fieldset>
+        <label for="terms-and-conditions"><!--Terms & Conditions-->
+            <input class="terms-and-conditions" id="terms-and-conditions" name="terms-and-conditions" required type="checkbox">
+            I accept the <a href="https://www.freecodecamp.org/news/terms-of-service/" target="_blank"> terms and
+                conditions</a>
+        </label>
+        <input type="submit" value="submit"> <!--Submit-->
+    </form>
+</body>
+
+</html>
